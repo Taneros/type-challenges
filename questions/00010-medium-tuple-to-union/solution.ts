@@ -1,10 +1,15 @@
-type TupleToUnion<T extends unknown[]> = T[number] 
+type TupleToUnion<T extends unknown[]> = T[number]
 
-type TupleToUnion<T> = T extends (infer R)[] 
+type TupleToUnion<T> = T extends (infer R)[]
   ? R
-    : never;
+  : never
 
-    type TupleToUnion<T> = T extends Array<infer Items>
+type TupleToUnion<T> = T extends Array<infer Items>
   ? Items
-    : 
-      never;
+  :
+  never
+
+type TupleToUnion<T> = T extends [infer Head, ...infer Tail]
+  ? Head | TupleToUnion<Tail>
+  :
+  never     
