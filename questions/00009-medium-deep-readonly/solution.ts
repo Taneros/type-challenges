@@ -29,3 +29,7 @@ type DeepReadonly<T> = T extends never
   : keyof T extends never
   ? T
   : { readonly [k in keyof T]: DeepReadonly<T[k]> }
+
+  type DeepReadonly<T> = T extends Function 
+  ? T
+  : {readonly [P in keyof T]: DeepReadonly<T[P]>}
