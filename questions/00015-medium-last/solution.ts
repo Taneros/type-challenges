@@ -4,4 +4,8 @@ type Last<T extends unknown[]> = T['length'] extends [0]['length']
   ? Last
   : never
 
+  type Last<T extends unknown[]> = T extends [...infer Head, infer I]
+  ? I
+  : never
+
 type Last<T extends any[]> = [any, ...T][T['length']]
