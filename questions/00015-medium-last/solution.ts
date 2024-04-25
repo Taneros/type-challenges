@@ -9,3 +9,5 @@ type Last<T extends unknown[]> = T['length'] extends [0]['length']
   : never
 
 type Last<T extends any[]> = [any, ...T][T['length']]
+
+type Last<T extends unknown[]> = [unknown, ...T][T['length']]
