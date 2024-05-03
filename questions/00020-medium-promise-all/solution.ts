@@ -1,10 +1,8 @@
-type Awaited<T> = 
+type Awaited<T> =
     T extends PromiseLike<infer R>
     ? Awaited<R>
-    : T;
+    : T
 
-declare function PromiseAll<V extends Array<unknown>>(value: readonly [...V]):
-    Promise<{
-        [P in keyof T]: Awaited<T[P]>
-    }>
-    
+declare function PromiseAll<V extends unknown[]>(values: readonly [...V]): Promise<{
+    [P in keyof V]: Awaited<V[P]>
+}>
