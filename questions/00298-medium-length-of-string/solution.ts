@@ -16,7 +16,11 @@ type LengthOfString<S extends string, Acc extends unknown[] = []> = S['length'] 
   ? LengthOfString<R, [L, ...Acc]>
   : Acc['length']
 
-  type LengthOfString<S extends string, Acc extends unknown[] = []> = 
-    S extends `${infer Head}${infer Tail}`
-    ? LengthOfString<Tail, [...Acc, Head]>
-    : Acc['length'];
+type LengthOfString<S extends string, Acc extends unknown[] = []> =
+  S extends `${infer Head}${infer Tail}`
+  ? LengthOfString<Tail, [...Acc, Head]>
+  : Acc['length']
+
+type LengthOfString<S extends string, Acc extends string[] = []> = S extends `${string}${infer R}`
+  ? LengthOfString<R, [...Acc, string]>
+  : Acc['length']
